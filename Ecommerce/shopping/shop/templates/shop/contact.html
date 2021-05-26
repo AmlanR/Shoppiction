@@ -1,0 +1,38 @@
+{% extends 'shop/basic.html' %}
+
+{% block title %}CONTACT TAB{% endblock %}
+{% block css %}{% endblock %}
+{% block body %}
+<div class="container">
+    <h3 align="center" class="my-4"><strong>Contact us regarding any Query</strong></h3>
+    <form action="/shop/contact/" class="my-3" method="post"> {% csrf_token %}
+    <div class="mb-3">
+  <label for="name" class="form-label">Name</label>
+  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name here" required>
+</div>
+<div class="mb-3">
+  <label for="phone" class="form-label">Phone number</label>
+  <input type="tel" class="form-control" id="phone"  name="phone" placeholder="Your Contact number" required>
+
+    <label for="email" class="form-label my-3">Email address</label>
+  <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+</div>
+<div class="mb-3">
+  <label for="desc"  >How may we help you??</label>
+  <textarea class="form-control"  placeholder="Your query in detail" id="desc" name="desc" rows="3" required></textarea>
+</div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+{% if thank %}
+alert('Thanks for submitting Your feedback...We will Update you soon.');
+
+document.location="/shop/contact/"
+{% endif %}
+</script>
+{% endblock %}
